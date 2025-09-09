@@ -77,7 +77,9 @@ st.title("Modern Scientific Calculator")
 
 top_col1, top_col2 = st.columns([3, 2])
 with top_col1:
-    st.text_input("Expression", key="display", placeholder="Enter expression…")
+    # Reserve space for the input at the very top, but don't instantiate it yet.
+    # This allows button handlers below to mutate st.session_state.display first.
+    input_placeholder = st.empty()
     btn_rows = [
         [
             ("MC", memory_clear), ("MR", memory_read), ("M+", memory_add), ("M-", memory_subtract),
@@ -109,6 +111,14 @@ with top_col1:
             with col:
                 if st.button(text, use_container_width=True):
                     handler()
+
+    # Now create the input widget after handlers may have modified the value.
+    input_placeholder.text_input(
+        "Expression",
+        key="display",
+        value=st.session_state.display,
+        placeholder="Enter expression…",
+    )
 
 with top_col2:
     st.subheader("History")
