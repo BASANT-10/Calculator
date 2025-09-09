@@ -33,6 +33,17 @@ Run
 python calculator.py
 ```
 
+Run on Streamlit (web)
+----------------------
+Streamlit Cloud expects an entry file like `streamlit_app.py`.
+
+```bash
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+On Streamlit Cloud, set the entrypoint to `streamlit_app.py` in the app settings.
+
 Usage tips
 ----------
 - Use `^` for exponentiation (e.g., `2^8`), `%` will be interpreted as `/100` for numbers (e.g., `12%` → `0.12`).

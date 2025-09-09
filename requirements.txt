@@ -1,2 +1,3 @@
 PyQt6>=6.6
+streamlit>=1.36
 
